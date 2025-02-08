@@ -15,10 +15,6 @@ internal static class Constants
         #nullable enable
         """;
 
-    //using Microsoft.Extensions.DependencyInjection;
-    //    using Ravitor.Contracts;
-    //    using Ravitor.Contracts.Handlers;
-
     public const string Footer = """
         #nullable disable
         """;
