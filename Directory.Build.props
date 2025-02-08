@@ -6,8 +6,7 @@
     <ImplicitUsings>true</ImplicitUsings>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <Configuration Condition="$(Configuration) == ''">Debug</Configuration>
-    <EnablePreviewFeatures>True</EnablePreviewFeatures>
-    <NoWarn>$(NoWarn);CS8509;IDE0039;IDE0130;IDE0290;IDE0060;RZ10012;IDE0052;BL0007;</NoWarn>
+    <NoWarn>$(NoWarn);CS8509;IDE0039;IDE0130;IDE0290;IDE0060;RZ10012;IDE0052;BL0007;NU5128</NoWarn>
     <WarningsAsErrors>$(WarningsAsErrors);RZ2012;</WarningsAsErrors>
 
     <ArtifactsPath>$([System.IO.Path]::Combine(
@@ -22,13 +21,13 @@
 
   <!-- Repository -->
   <PropertyGroup>
-    <Authors>Raven Tail; Panagiotis Athanasiou</Authors>
-    <Copyright>Copyright (c) 2025 $(Authors)</Copyright>
+    <Authors>Raven Tail, Panagiotis Athanasiou</Authors>
+    <Copyright>Copyright (c) 2025, $(Authors)</Copyright>
     <RepositoryUrl>https://www.github.com/raven-tail/ravitor</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryLicense>MIT</RepositoryLicense>
     <RepositoryDescription></RepositoryDescription>
-    <RepositoryTags>source generators;mediator</RepositoryTags>
+    <RepositoryTags>mediator;source;generators;interceptors</RepositoryTags>
   </PropertyGroup>
 
   <!-- Package -->
@@ -38,12 +37,18 @@
     <PackageDescription>$(RepositoryDescription)</PackageDescription>
     <PackageTags>$(RepositoryTags)</PackageTags>
     <PackageReleaseNotes>$(RepositoryUrl)/releases</PackageReleaseNotes>
-    <!--<PackageIcon></PackageIcon>-->
+    <!--<PackageIcon>Icon.png</PackageIcon>-->
     <PackageReadmeFile>README.md</PackageReadmeFile>
 
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <!--<IncludeSymbols>true</IncludeSymbols>-->
-    <!--<SymbolPackageFormat>snupkg</SymbolPackageFormat>-->
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <!-- Package -->
+  <ItemGroup Condition="'$(OutputType)' == 'Library'">
+    <None Include="$(MSBuildThisFileDirectory)\README.md" Pack="True" PackagePath="\" />
+    <!--<None Include="$(MSBuildThisFileDirectory)\Icon.png" Pack="True" PackagePath="\" />-->
+  </ItemGroup>
 
 </Project>
