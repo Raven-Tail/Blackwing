@@ -1,4 +1,4 @@
-﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Operations;
@@ -10,7 +10,7 @@ namespace Ravitor;
 #pragma warning disable RSEXPERIMENTAL002 // / Experimental interceptable location API
 
 [Generator]
-public sealed class RavitorIncrementalGenerator : IIncrementalGenerator
+internal sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
 {
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {

@@ -2,7 +2,7 @@
 
 namespace Ravitor.Generator.Models;
 
-public readonly record struct HandlerToGenerate
+internal readonly record struct HandlerToGenerate
 {
     public readonly string WrapperHandler;
     public readonly string RequestHandler;

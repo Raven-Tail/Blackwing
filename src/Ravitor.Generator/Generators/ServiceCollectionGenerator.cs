@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ravitor.Generator.Generators;
 
-public static class ServiceCollectionGenerator
+internal static class ServiceCollectionGenerator
 {
     public static (string HintName, string Content) Generate(in ImmutableArray<HandlerToGenerate> handlersToGenerate)
     {

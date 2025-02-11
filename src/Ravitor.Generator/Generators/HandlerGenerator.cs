@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Ravitor.Generator.Generators;
 
-public static class HandlerGenerator
+internal static class HandlerGenerator
 {
     public static (string HintName, string Content) Generate(in HandlerToGenerate handlerToGenerate)
     {

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ravitor.Generator.Generators;
 
-public static class InterceptorGenerator
+internal static class InterceptorGenerator
 {
     public const string InterceptorLocationAttribute = $$"""
         using System;
