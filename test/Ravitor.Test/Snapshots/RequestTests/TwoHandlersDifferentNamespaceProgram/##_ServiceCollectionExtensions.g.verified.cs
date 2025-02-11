@@ -11,9 +11,8 @@
 #nullable enable
 
 using Ravitor.Contracts.Handlers;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace Ravitor.Generator;
+namespace Microsoft.Extensions.DependencyInjection;
 
 internal static class ServiceCollectionExtensions
 {

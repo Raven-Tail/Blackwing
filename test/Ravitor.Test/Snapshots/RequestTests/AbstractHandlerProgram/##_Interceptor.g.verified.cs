@@ -29,11 +29,11 @@ namespace System.Runtime.CompilerServices
     }
 }
 
-namespace Ravitor.Generator
+namespace Ravitor.Interceptor
 {
     static file class Interceptors
     {
-        [InterceptsLocation(1, "Oagn3QlS0mJWqSgKRbF7IlEDAAA=")] // (31,32)
+        [InterceptsLocation(1, "px/HQ72kzJE4u7bM8z56eCMDAAA=")] // (30,32)
         public static ValueTask<TResponse> Send_Some_Nested_Types_Program_Ping<TResponse>(this global::Ravitor.Contracts.IMediator sender, IRequest<TResponse> request, CancellationToken cancellationToken = default)
         {
             var rqst = request as global::Some.Nested.Types.Program.Ping;

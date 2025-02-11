@@ -29,11 +29,11 @@ namespace System.Runtime.CompilerServices
     }
 }
 
-namespace Ravitor.Generator
+namespace Ravitor.Interceptor
 {
     static file class Interceptors
     {
-        [InterceptsLocation(1, "C4YPF92gqUOHAGRfrajXoOoCAAA=")] // (28,35)
+        [InterceptsLocation(1, "9FCA7+z0ERKLQxKzL07wm7sCAAA=")] // (27,35)
         public static ValueTask<TResponse> Send_Ravitor_Test_Integration_Ping<TResponse>(this global::Ravitor.Contracts.ISender sender, IRequest<TResponse> request, CancellationToken cancellationToken = default)
         {
             var rqst = request as global::Ravitor.Test.Integration.Ping;

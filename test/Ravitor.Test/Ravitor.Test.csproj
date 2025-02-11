@@ -29,8 +29,4 @@
     <None Include="Snapshots\**\*.cs" CopyToOutputDirectory="Always" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Resources\ConfigTests\" />
-  </ItemGroup>
-
 </Project>

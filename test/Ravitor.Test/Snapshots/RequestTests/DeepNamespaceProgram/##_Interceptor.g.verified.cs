@@ -29,11 +29,11 @@ namespace System.Runtime.CompilerServices
     }
 }
 
-namespace Ravitor.Generator
+namespace Ravitor.Interceptor
 {
     static file class Interceptors
     {
-        [InterceptsLocation(1, "KnNQv/PXF5xxsoH/WDvS1KYDAAA=")] // (31,32)
+        [InterceptsLocation(1, "IzyPNf/xEISaGAijtVT1DXgDAAA=")] // (30,32)
         public static ValueTask<TResponse> Send_Some_Very_Very_Very_Very_Deep_Namespace_ThatIUseToTestTheSourceGenSoThatItCanHandleLotsOfDifferentInput_Ping<TResponse>(this global::Ravitor.Services.Mediator sender, IRequest<TResponse> request, CancellationToken cancellationToken = default)
         {
             var rqst = request as global::Some.Very.Very.Very.Very.Deep.Namespace.ThatIUseToTestTheSourceGenSoThatItCanHandleLotsOfDifferentInput.Ping;

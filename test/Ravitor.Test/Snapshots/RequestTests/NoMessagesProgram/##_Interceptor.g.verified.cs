@@ -29,7 +29,7 @@ namespace System.Runtime.CompilerServices
     }
 }
 
-namespace Ravitor.Generator
+namespace Ravitor.Interceptor
 {
     static file class Interceptors
     {

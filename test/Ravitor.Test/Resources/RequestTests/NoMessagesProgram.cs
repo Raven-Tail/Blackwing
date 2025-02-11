@@ -8,7 +8,6 @@ using Ravitor.Contracts.Handlers;
 using Ravitor.Contracts.Pipelines;
 using Ravitor.Contracts.Requests;
 using Ravitor.Services;
-using Ravitor.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Some.Nested.Types
