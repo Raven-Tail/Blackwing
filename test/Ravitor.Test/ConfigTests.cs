@@ -5,6 +5,12 @@ namespace Ravitor.Test;
 public sealed class ConfigTests : TestBase
 {
     [Test]
+    public Task DisableInterceptorProgram()
+    {
+        return Verify();
+    }
+
+    [Test]
     public Task JustAttributeProgram()
     {
         return Verify();

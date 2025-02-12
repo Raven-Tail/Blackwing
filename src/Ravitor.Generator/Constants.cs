@@ -26,7 +26,7 @@ internal static class Constants
 
     public static class BuildProperties
     {
-        public const string DisableRavitorInterceptor = "DisableRavitorInterceptor";
+        public const string DisableRavitorInterceptor = "build_property.DisableRavitorInterceptor";
     }
 
     public static class Options

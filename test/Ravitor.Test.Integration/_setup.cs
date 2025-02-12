@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Ravitor.Contracts.Options;
+
+//[assembly:RavitorOptions(DisableInterceptor = true)]
 
 namespace Ravitor.Test.Integration;
 

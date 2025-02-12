@@ -1,4 +1,4 @@
-﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Operations;
@@ -14,9 +14,19 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
 {
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
+        // Get disable ravitor interceptor property.
+        var disableRavitorInterceptorProp = context
+            .AnalyzerConfigOptionsProvider
+            .Select(static (config, _) =>
+                // Get the value, check if it's set to 'true', otherwise return false
+                config.GlobalOptions.TryGetValue(Constants.BuildProperties.DisableRavitorInterceptor, out var d) && d.Equals("true", StringComparison.OrdinalIgnoreCase)
+            );
+
         // Get user options.
         var options = context.CompilationProvider
-            .Select((compilation, ct) => GetOptionsFromCompilation(compilation, ct));
+            .Select(static (compilation, ct) => GetOptionsFromCompilation(compilation, ct))
+            .Combine(disableRavitorInterceptorProp)
+            .Select(static (combined, ct) => combined.Left.WithDisableInterceptor(combined.Right));
 
         // Generate handler execution code.
         var handlersToGenerate = context.SyntaxProvider
@@ -33,16 +43,15 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
         });
 
         // Generate service collection extension.
-        var extensionToGenerate = handlersToGenerate.Collect().Combine(options);
+        var extensionToGenerate = handlersToGenerate.Collect();
 
-        context.RegisterSourceOutput(extensionToGenerate, static (spc, optionsAndHandlers) =>
+        context.RegisterSourceOutput(extensionToGenerate.Combine(options), static (spc, handlersWithOptions) =>
         {
-            var (sources, options) = optionsAndHandlers;
+            var (sources, options) = handlersWithOptions;
             var (filename, content) = ServiceCollectionGenerator.Generate(sources, options);
             spc.AddSource(filename, content);
         });
 
-        // todo: Add way to enable disable
         // Generate interceptors.
         var interceptorsToGenerate = context.SyntaxProvider
             .CreateSyntaxProvider(
@@ -52,9 +61,10 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
             .Select(static (candidate, ct) => candidate!.Value)
             .Collect();
 
-        context.RegisterSourceOutput(interceptorsToGenerate, static (spc, sources) =>
+        context.RegisterSourceOutput(interceptorsToGenerate.Combine(options), static (spc, interceptorsWithOptions) =>
         {
-            if (sources.IsEmpty) return;
+            var (sources, options) = interceptorsWithOptions;
+            if (options.DisableInterceptor || sources.IsEmpty) return;
 
             var (filename, content) = InterceptorGenerator.Generate(sources);
             spc.AddSource(filename, content);

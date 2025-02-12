@@ -25,5 +25,11 @@ public sealed class RavitorOptionsAttribute : Attribute
 
     //public bool ServicesRegisterWrapper { get; set;}
 
-    //public bool DisableInterceptor { get; set; }
+    /// <summary>
+    /// Allows you to disable the interceptors generation (defaults to false).
+    /// </summary>
+    /// <remarks>
+    /// You can also disable the interceptors generation by setting the 'DisableRavitorInterceptor' MSBuild Property to 'true'.
+    /// </remarks>
+    public bool DisableInterceptor { get; set; }
 }

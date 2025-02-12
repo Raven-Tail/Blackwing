@@ -14,7 +14,7 @@ internal sealed record RavitorOptions
 
     //public bool ServicesRegisterWrapper { get; private set; }
 
-    //public bool DisableInterceptor { get; private set; }
+    public bool DisableInterceptor { get; private set; }
 
     public void SetValue(string key, TypedConstant value)
     {
@@ -35,9 +35,15 @@ internal sealed record RavitorOptions
             //case nameof(ServicesRegisterWrapper):
             //    ServicesRegisterWrapper = value.Value is bool servicesRegisterWrapper && servicesRegisterWrapper;
             //    break;
-            //case nameof(DisableInterceptor):
-            //    DisableInterceptor = value.Value is bool disableInterceptor && disableInterceptor;
-            //    break;
+            case nameof(DisableInterceptor):
+                DisableInterceptor = value.Value is bool disableInterceptor && disableInterceptor;
+                break;
         }
+    }
+
+    public RavitorOptions WithDisableInterceptor(bool disableInterceptor)
+    {
+        DisableInterceptor = DisableInterceptor || disableInterceptor;
+        return this;
     }
 };
