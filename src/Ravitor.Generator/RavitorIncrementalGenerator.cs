@@ -7,10 +7,10 @@ using Ravitor.Generator.Models;
 
 namespace Ravitor;
 
-#pragma warning disable RSEXPERIMENTAL002 // / Experimental interceptable location API
+#pragma warning disable RSEXPERIMENTAL002 // Experimental interceptable location API
 
 [Generator]
-internal sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
+public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
 {
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
@@ -39,6 +39,7 @@ internal sealed partial class RavitorIncrementalGenerator : IIncrementalGenerato
         });
 
         // todo: Add way to enable disable
+        // Generate interceptors.
         var interceptorsToGenerate = context.SyntaxProvider
             .CreateSyntaxProvider(
                 predicate: static (node, _) => node is InvocationExpressionSyntax { Expression: MemberAccessExpressionSyntax { Name.Identifier.ValueText: Constants.Sender.SendMethod } },
@@ -47,9 +48,10 @@ internal sealed partial class RavitorIncrementalGenerator : IIncrementalGenerato
             .Select(static (candidate, ct) => candidate!.Value)
             .Collect();
 
-        // Generate interceptors
         context.RegisterSourceOutput(interceptorsToGenerate, static (spc, sources) =>
         {
+            if (sources.IsEmpty) return;
+
             var (filename, content) = InterceptorGenerator.Generate(sources);
             spc.AddSource(filename, content);
         });

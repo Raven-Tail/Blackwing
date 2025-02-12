@@ -14,7 +14,7 @@ using Ravitor.Contracts.Handlers;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-internal static class ServiceCollectionExtensions
+internal static class RavitorServiceCollectionExtensions
 {
     public static IServiceCollection AddRavitorHandlers(this IServiceCollection services)
     {
