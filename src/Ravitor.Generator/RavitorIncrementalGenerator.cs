@@ -1,4 +1,4 @@
-using Microsoft.CodeAnalysis;
+﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Operations;
@@ -14,6 +14,11 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
 {
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
+        // Get user options.
+        var options = context.CompilationProvider
+            .Select((compilation, ct) => GetOptionsFromCompilation(compilation, ct));
+
+        // Generate handler execution code.
         var handlersToGenerate = context.SyntaxProvider
             .CreateSyntaxProvider(
                 predicate: static (node, _) => node is ClassDeclarationSyntax { BaseList.Types.Count: > 0 },
@@ -21,20 +26,19 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
             .Where(static handler => handler.HasValue)
             .Select(static (handler, ct) => handler!.Value);
 
-        var extensionToGenerate = handlersToGenerate
-            .Collect();
-
-        // Generate handler execution code
         context.RegisterSourceOutput(handlersToGenerate, static (spc, source) =>
         {
             var (filename, content) = HandlerGenerator.Generate(source);
             spc.AddSource(filename, content);
         });
 
-        // Generate service collection extension
-        context.RegisterSourceOutput(extensionToGenerate, static (spc, sources) =>
+        // Generate service collection extension.
+        var extensionToGenerate = handlersToGenerate.Collect().Combine(options);
+
+        context.RegisterSourceOutput(extensionToGenerate, static (spc, optionsAndHandlers) =>
         {
-            var (filename, content) = ServiceCollectionGenerator.Generate(sources);
+            var (sources, options) = optionsAndHandlers;
+            var (filename, content) = ServiceCollectionGenerator.Generate(sources, options);
             spc.AddSource(filename, content);
         });
 
@@ -55,6 +59,24 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
             var (filename, content) = InterceptorGenerator.Generate(sources);
             spc.AddSource(filename, content);
         });
+    }
+
+    static RavitorOptions GetOptionsFromCompilation(Compilation compilation, in CancellationToken ct)
+    {
+        var options = new RavitorOptions();
+        foreach (var attribute in compilation.Assembly.GetAttributes())
+        {
+            if (attribute.AttributeClass?.ContainingAssembly.Name is not Constants.Assembly.Name)
+                continue;
+
+            // This is the attribute, check all of the named arguments
+            foreach (var (key, value) in attribute.NamedArguments)
+            {
+                options.SetValue(key, value);
+            }
+            return options;
+        }
+        return options;
     }
 
     static HandlerToGenerate? HandlerTransform(in GeneratorSyntaxContext context, in CancellationToken ct)
@@ -107,11 +129,11 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
         var invocation = (InvocationExpressionSyntax)context.Node;
 
         if (invocation.ArgumentList.Arguments.Count is 1 or 2
-            // Get the semantic definition of the method invocation
+            // Get the semantic definition of the method invocation if the user has an invalid call (no IRequest implementation this will be false)
             && context.SemanticModel.GetOperation(context.Node, ct) is IInvocationOperation targetOperation
             // This is the main check - is the method a Send invocation
             && targetOperation.TargetMethod is { Name: Constants.Sender.SendMethod, TypeArguments.Length: 1, Parameters.Length: 2 } targetMethod
-            // Grab the Type of the sender on which this is being invoked 
+            // Grab the Type of the sender on which this is being invoked. It must be a reference type (class)
             && targetOperation.Instance?.Type is { IsReferenceType: true } type
             // The Type must implement ISender
             && (TypeIsISender(type) || type.AllInterfaces.Any(ImplementsISender))

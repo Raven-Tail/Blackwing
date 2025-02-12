@@ -6,12 +6,14 @@ namespace Ravitor.Generator.Generators;
 
 internal static class ServiceCollectionGenerator
 {
-    public static (string HintName, string Content) Generate(in ImmutableArray<HandlerToGenerate> handlersToGenerate)
+    public static (string HintName, string Content) Generate(in ImmutableArray<HandlerToGenerate> handlersToGenerate, RavitorOptions options)
     {
-        // todo: Allow to define if class should be public or internal (internal default).
-        // todo: Allow to define Class Name (ServiceCollectionExtensions default).
-        // todo: Allow to define Method name (AddRavitorHandlers default).
         // todo: Allow to define if all three should be registered or if the second registration should be removed (add it by default).
+        // todo: Register diagnostics for the invalid names.
+
+        var classAccess = options.ServicesClassPublic ? "public" : "internal";
+        var className = options.ServicesClassName.IsValidClassName() ? options.ServicesClassName : "RavitorServiceCollectionExtensions";
+        var methodName = options.ServicesMethodName.IsValidClassName() ? options.ServicesMethodName : "AddRavitorHandlers";
 
         var sb = new StringBuilder();
         sb.AppendLine($$"""
@@ -21,12 +23,11 @@ internal static class ServiceCollectionGenerator
         
         namespace Microsoft.Extensions.DependencyInjection;
         
-        internal static class ServiceCollectionExtensions
+        {{classAccess}} static class {{className}}
         {
-            public static IServiceCollection AddRavitorHandlers(this IServiceCollection services)
+            public static IServiceCollection {{methodName}}(this IServiceCollection services)
             {
         """);
-
         foreach (var handlerToGenerate in handlersToGenerate)
         {
             var handler = handlerToGenerate.RequestHandler;

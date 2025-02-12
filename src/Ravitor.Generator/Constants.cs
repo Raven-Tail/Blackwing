@@ -24,6 +24,16 @@ internal static class Constants
         public const string Name = "Ravitor.Contracts";
     }
 
+    public static class BuildProperties
+    {
+        public const string DisableRavitorInterceptor = "DisableRavitorInterceptor";
+    }
+
+    public static class Options
+    {
+        public const string AttributeFullName = "Ravitor.Contracts.Options.RavitorOptionsAttribute";
+    }
+
     public static class Generator
     {
         public const string Namespace = "Ravitor.Generator";
