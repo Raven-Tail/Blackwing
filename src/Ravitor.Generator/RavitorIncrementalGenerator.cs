@@ -156,14 +156,12 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
             var requestNode = invocation.ArgumentList.Arguments[0].ChildNodes().FirstOrDefault();
             if (requestNode is null) return null;
 
-            var requestInfo = context.SemanticModel.GetTypeInfo(requestNode);
-            var request = requestInfo.Type?.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
-            if (request is null) return null;
+            // We can't intercept interfaces and generic types.
+            var requestInfo = context.SemanticModel.GetTypeInfo(requestNode).Type as INamedTypeSymbol;
+            if (requestInfo is null || requestInfo.TypeKind is TypeKind.Interface || requestInfo.IsGenericType)
+                return null;
 
-            // If it contains '<' this means it's a generic request type which we can not intercept
-            // and sender doesn't support it probably except for when passed directly from mediator to mediator either way.
-            if (request.IndexOf('<') is not -1) return null;
-
+            var request = requestInfo.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
             var response = targetMethod.TypeArguments[0].ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
             var sender = type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
 
@@ -178,10 +176,10 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
         // Not an interceptor location we're interested in 
         return null;
 
-        static bool TypeIsISender(ITypeSymbol handler) => handler is
+        static bool TypeIsISender(ITypeSymbol handler) => handler is INamedTypeSymbol
         {
             Name: Constants.Sender.ISender,
-            //IsGenericType: false, TypeParameters.Length: 0, TypeArguments.Length: 0,
+            IsGenericType: false, TypeParameters.Length: 0, TypeArguments.Length: 0,
             ContainingAssembly.Name: Constants.Assembly.Name,
             //ContainingNamespace: { ContainingNamespace.Name: Constants.BaseNamespaceName, Name: Constants.ContractsNamespace },
         };
