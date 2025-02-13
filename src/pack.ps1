@@ -4,14 +4,21 @@ param (
     [string] $output = "",
 
     [Parameter()]
+    [switch] $clearOutput = $false,
+
+    [Parameter()]
     [string] $version = ""
 )
 
-if ($output -ne ""){
-    Resolve-Path $output | Remove-Item -Filter "*nupkg" -Recurse -ErrorAction SilentlyContinue
-}
-else {
-    Remove-Item -Path "../artifacts/src/package/release" -Filter "*nupkg" -Recurse -ErrorAction SilentlyContinue
+if ($clearOutput)
+{
+    $dir = Resolve-Path -Path ($output -ne "" ? $output : "../artifacts/src/package/release")
+    $items = Get-ChildItem -Path $dir -Filter "*nupkg"
+    if ($items.Length -gt 0)
+    {
+        Write-Host "Removing $($items.Length) items (.*nupkg) at '$dir'"
+        $items | Remove-Item
+    }
 }
 
 $projects = @(
@@ -37,7 +44,3 @@ foreach ($project in $projects) {
     Write-Host "$ $expression"
     Invoke-Expression -Command $expression
 }
-
-# dotnet pack -c Release .\Ravitor.Contracts\
-# dotnet pack -c Release .\Ravitor.Extensions.DependencyInjection\
-# dotnet pack -c Release .\Ravitor.Generator\

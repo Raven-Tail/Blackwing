@@ -1,4 +1,4 @@
-$pack = "..\..\src\pack.ps1 -output .\packages -version 1.0.0-test"
+$pack = "..\..\src\pack.ps1 -output .\packages -clearOutput -version 1.0.0-test"
 
 # Restore the project using the custom config file, restoring packages to a local folder
 $restore = "dotnet restore --packages .\packages --configfile nuget.integration.config"
