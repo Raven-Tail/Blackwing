@@ -9,6 +9,7 @@ $build = "dotnet build -c Release --packages .\packages --no-restore"
 # Test the project (no build or restore)
 $test = "dotnet test -c Release --no-build --no-restore "
 
+New-Item -Name "packages" -ItemType Directory -ErrorAction SilentlyContinue
 Invoke-Expression $pack
 Invoke-Expression $restore
 Invoke-Expression $build
