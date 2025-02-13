@@ -1,4 +1,4 @@
-﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Operations;
@@ -162,6 +162,11 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
 
             var sender = type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
             var response = targetMethod.TypeArguments[0].ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
+            var sender = type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
+
+            // Interfaces need to be the root ISender interface to be intercepted.
+            if (type.TypeKind is TypeKind.Interface)
+                sender = $"global::{Constants.Sender.ISenderFull}";
 
             // Return the location details and the full type details
             return new InterceptorToGenerate(location, sender, request, response);

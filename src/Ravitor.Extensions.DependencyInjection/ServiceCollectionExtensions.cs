@@ -19,9 +19,9 @@ public static class ServiceCollectionExtensions
     {
         if (reflectionBased)
         {
-        //    services.TryAddScoped<MediatorReflection>();
-        //    services.TryAddScoped<IMediator>(static sp => sp.GetRequiredService<MediatorReflection>());
-        //    services.TryAddScoped<ISender>(static sp => sp.GetRequiredService<MediatorReflection>());
+            services.TryAddScoped<MediatorReflection>();
+            services.TryAddScoped<IMediator>(static sp => sp.GetRequiredService<MediatorReflection>());
+            services.TryAddScoped<ISender>(static sp => sp.GetRequiredService<MediatorReflection>());
         }
         else
         {

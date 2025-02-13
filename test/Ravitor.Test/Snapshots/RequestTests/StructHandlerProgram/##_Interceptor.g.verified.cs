@@ -34,7 +34,7 @@ namespace Ravitor.Interceptor
     static file class Interceptors
     {
         [InterceptsLocation(1, "uaO0vLSgp7NZjfwatzTT21kCAAA=")] // (24,20)
-        public static ValueTask<TResponse> Send_Ping<TResponse>(this global::Ravitor.Contracts.IMediator sender, IRequest<TResponse> request, CancellationToken cancellationToken = default)
+        public static ValueTask<TResponse> Send_Ping<TResponse>(this global::Ravitor.Contracts.ISender sender, IRequest<TResponse> request, CancellationToken cancellationToken = default)
         {
             var rqst = request as global::Ping;
             var task = sender.Send<global::Ping, global::Pong>(rqst!, cancellationToken);
