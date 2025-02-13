@@ -57,4 +57,16 @@ public sealed class ConfigTests : TestBase
     {
         return Verify();
     }
+
+    [Test]
+    public Task ServicesNamespaceInvalidProgram()
+    {
+        return Verify();
+    }
+
+    [Test]
+    public Task ServicesNamespaceProgram()
+    {
+        return Verify();
+    }
 }

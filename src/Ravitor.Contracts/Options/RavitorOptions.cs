@@ -10,6 +10,12 @@ public sealed class RavitorOptionsAttribute : Attribute
     public bool HandlersClassPublic { get; set; }
 
     /// <summary>
+    /// Allows you to define the namespace of the service collection
+    /// extension class (defaults to Microsoft.Extensions.DependencyInjection).
+    /// </summary>
+    public string? ServicesNamespace { get; set; }
+
+    /// <summary>
     /// Allows you to define if the service collection extension class
     /// should be public or internal (defaults to internal).
     /// </summary>

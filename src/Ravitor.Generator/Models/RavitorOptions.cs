@@ -6,6 +6,8 @@ internal sealed record RavitorOptions
 {
     public bool HandlersClassPublic { get; private set; }
 
+    public string? ServicesNamespace { get; private set; }
+
     public bool ServicesClassPublic { get; private set; }
 
     public string? ServicesClassName { get; private set; }
@@ -22,6 +24,9 @@ internal sealed record RavitorOptions
         {
             case nameof(HandlersClassPublic):
                 HandlersClassPublic = value.Value is bool handlersClassPublic && handlersClassPublic;
+                break;
+            case nameof(ServicesNamespace):
+                ServicesNamespace = value.Value as string;
                 break;
             case nameof(ServicesClassPublic):
                 ServicesClassPublic = value.Value is bool servicesClassPublic && servicesClassPublic;

@@ -11,6 +11,7 @@ internal static class ServiceCollectionGenerator
         // todo: Allow to define if all three should be registered or if the second registration should be removed (add it by default).
         // todo: Register diagnostics for the invalid names.
 
+        var (classNamespace, validNamespace) = options.ServicesNamespace.IsValidNamespace() ? (options.ServicesNamespace, true) :( "Microsoft.Extensions.DependencyInjection", false);
         var classAccess = options.ServicesClassPublic ? "public" : "internal";
         var className = options.ServicesClassName.IsValidClassName() ? options.ServicesClassName : "RavitorServiceCollectionExtensions";
         var methodName = options.ServicesMethodName.IsValidClassName() ? options.ServicesMethodName : "AddRavitorHandlers";
@@ -18,10 +19,16 @@ internal static class ServiceCollectionGenerator
         var sb = new StringBuilder();
         sb.AppendLine($$"""
         {{Constants.Header}}
-
-        using Ravitor.Contracts.Handlers;
         
-        namespace Microsoft.Extensions.DependencyInjection;
+        using Ravitor.Contracts.Handlers;
+        """);
+        if (validNamespace)
+        {
+            sb.AppendLine("using Microsoft.Extensions.DependencyInjection;");
+        }
+        sb.AppendLine();
+        sb.AppendLine($$"""
+        namespace {{classNamespace}};
         
         {{classAccess}} static class {{className}}
         {
