@@ -5,7 +5,7 @@ namespace Ravitor.Generator.Generators;
 
 internal static class HandlerGenerator
 {
-    public static (string HintName, string Content) Generate(in HandlerToGenerate handlerToGenerate)
+    public static (string HintName, string Content) Generate(in HandlerToGenerate handlerToGenerate, RavitorOptions options)
     {
         var handler = handlerToGenerate.RequestHandler;
         var wrapperNamespace = handlerToGenerate.WrapperNamespace;
@@ -13,7 +13,7 @@ internal static class HandlerGenerator
         var request = handlerToGenerate.Request;
         var response = handlerToGenerate.Response;
 
-        // todo: Allow to define if handlers should be public or internal (internal default).
+        var classAccess = options.HandlersClassPublic ? "public" : "internal";
 
         var content = $$"""
             {{Constants.Header}}
@@ -24,7 +24,7 @@ internal static class HandlerGenerator
 
             namespace {{wrapperNamespace}};
 
-            internal sealed class {{wrapper}} : {{Constants.Handlers.IRequestHandler}}<{{request}}, {{response}}>
+            {{classAccess}} sealed class {{wrapper}} : {{Constants.Handlers.IRequestHandler}}<{{request}}, {{response}}>
             {
                 private readonly {{Constants.Pipelines.IRequestPipelineDelegate}}<{{request}}, {{response}}> handler;
 

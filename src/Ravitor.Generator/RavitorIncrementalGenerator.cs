@@ -1,4 +1,4 @@
-using Microsoft.CodeAnalysis;
+﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Operations;
@@ -36,9 +36,10 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
             .Where(static handler => handler.HasValue)
             .Select(static (handler, ct) => handler!.Value);
 
-        context.RegisterSourceOutput(handlersToGenerate, static (spc, source) =>
+        context.RegisterSourceOutput(handlersToGenerate.Combine(options), static (spc, handlersWithOptions) =>
         {
-            var (filename, content) = HandlerGenerator.Generate(source);
+            var (source, options) = handlersWithOptions;
+            var (filename, content) = HandlerGenerator.Generate(source, options);
             spc.AddSource(filename, content);
         });
 

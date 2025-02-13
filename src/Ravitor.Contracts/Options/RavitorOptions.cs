@@ -3,7 +3,11 @@
 [AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = false)]
 public sealed class RavitorOptionsAttribute : Attribute
 {
-    //public bool HandlersClassPublic { get; set; }
+    /// <summary>
+    /// Allows you to define if the handler wrapper class
+    /// should be public or internal (defaults to internal).
+    /// </summary>
+    public bool HandlersClassPublic { get; set; }
 
     /// <summary>
     /// Allows you to define if the service collection extension class

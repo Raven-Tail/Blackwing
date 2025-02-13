@@ -11,6 +11,12 @@ public sealed class ConfigTests : TestBase
     }
 
     [Test]
+    public Task HandlersClassPublicProgram()
+    {
+        return Verify();
+    }
+
+    [Test]
     public Task JustAttributeProgram()
     {
         return Verify();

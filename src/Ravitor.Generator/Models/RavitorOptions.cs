@@ -4,7 +4,7 @@ namespace Ravitor;
 
 internal sealed record RavitorOptions
 {
-    //public bool HandlersClassPublic { get; private set; }
+    public bool HandlersClassPublic { get; private set; }
 
     public bool ServicesClassPublic { get; private set; }
 
@@ -20,9 +20,9 @@ internal sealed record RavitorOptions
     {
         switch (key)
         {
-            //case nameof(HandlersClassPublic):
-            //    HandlersClassPublic = value.Value is bool handlersClassPublic && handlersClassPublic;
-            //    break;
+            case nameof(HandlersClassPublic):
+                HandlersClassPublic = value.Value is bool handlersClassPublic && handlersClassPublic;
+                break;
             case nameof(ServicesClassPublic):
                 ServicesClassPublic = value.Value is bool servicesClassPublic && servicesClassPublic;
                 break;
