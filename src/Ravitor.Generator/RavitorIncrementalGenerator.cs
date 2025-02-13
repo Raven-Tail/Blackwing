@@ -1,4 +1,4 @@
-using Microsoft.CodeAnalysis;
+﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Operations;
@@ -154,13 +154,16 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
             && context.SemanticModel.GetInterceptableLocation(invocation) is { } location)
         {
             var requestNode = invocation.ArgumentList.Arguments[0].ChildNodes().FirstOrDefault();
+            if (requestNode is null) return null;
+
             var requestInfo = context.SemanticModel.GetTypeInfo(requestNode);
             var request = requestInfo.Type?.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
+            if (request is null) return null;
 
-            if (request is null)
-                return null;
+            // If it contains '<' this means it's a generic request type which we can not intercept
+            // and sender doesn't support it probably except for when passed directly from mediator to mediator either way.
+            if (request.IndexOf('<') is not -1) return null;
 
-            var sender = type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
             var response = targetMethod.TypeArguments[0].ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
             var sender = type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
 
@@ -168,7 +171,7 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
             if (type.TypeKind is TypeKind.Interface)
                 sender = $"global::{Constants.Sender.ISenderFull}";
 
-            // Return the location details and the full type details
+            // Return the location details and the fully quialified type details.
             return new InterceptorToGenerate(location, sender, request, response);
         }
 

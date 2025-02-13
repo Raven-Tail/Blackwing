@@ -41,6 +41,12 @@ public sealed class RequestTests : TestBase
         return Verify();
     }
 
+    [Test]
+    public Task InterceptInsideCustomMediatorProgram()
+    {
+        return Verify();
+    }
+
     [Test, Skip("Needs fixing to emit warning diagnostic that there are more than two handlers handling the same request.")]
     public Task MultipleErrorsProgram()
     {
