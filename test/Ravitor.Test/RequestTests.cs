@@ -61,6 +61,12 @@ public sealed class RequestTests : TestBase
     }
 
     [Test]
+    public Task QueryHandlerInterfaceProgram()
+    {
+        return Verify();
+    }
+
+    [Test]
     public Task RequestWithoutContractProgram()
     {
         // todo: Try to Implement diagnostic.

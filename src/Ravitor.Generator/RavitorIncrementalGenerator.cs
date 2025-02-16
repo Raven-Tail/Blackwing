@@ -31,7 +31,7 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
         // Generate handler execution code.
         var handlersToGenerate = context.SyntaxProvider
             .CreateSyntaxProvider(
-                predicate: static (node, _) => node is ClassDeclarationSyntax { BaseList.Types.Count: > 0 },
+                predicate: static (node, _) => node is ClassDeclarationSyntax { BaseList.Types.Count: > 0 } or RecordDeclarationSyntax { BaseList.Types.Count: > 0 },
                 transform: static (context, ct) => HandlerTransform(context, ct))
             .Where(static handler => handler.HasValue)
             .Select(static (handler, ct) => handler!.Value);
@@ -92,18 +92,22 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
 
     static HandlerToGenerate? HandlerTransform(in GeneratorSyntaxContext context, in CancellationToken ct)
     {
-        var classDeclarationSyntax = (ClassDeclarationSyntax)context.Node;
-        var classSymbol = context.SemanticModel.GetDeclaredSymbol(classDeclarationSyntax, ct);
+        var symbol = context.Node switch
+        {
+            ClassDeclarationSyntax classSyntax => context.SemanticModel.GetDeclaredSymbol(classSyntax, ct),
+            RecordDeclarationSyntax recordSyntax => context.SemanticModel.GetDeclaredSymbol(recordSyntax, ct),
+            _ => null
+        };
 
-        if (classSymbol is not { IsAbstract: false })
+        if (symbol is not { IsAbstract: false, AllInterfaces.IsEmpty: false })
             return null;
 
-        foreach (var interfaceSymbol in classSymbol.AllInterfaces)
+        foreach (var interfaceSymbol in symbol.AllInterfaces)
         {
             if (ImplementsIRequestHandler(interfaceSymbol) &&
                 ImplementsIRequest(interfaceSymbol.TypeArguments[0], interfaceSymbol.TypeArguments[1]))
             {
-                return new HandlerToGenerate(classSymbol, interfaceSymbol);
+                return new HandlerToGenerate(symbol, interfaceSymbol);
             }
         }
         return null;
