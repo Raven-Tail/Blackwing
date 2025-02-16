@@ -14,9 +14,9 @@
       "artifacts",
       $([MSBuild]::MakeRelative($(MSBuildThisFileDirectory),$(MSBuildProjectDirectory)).Replace("$(MSBuildProjectName)", '').TrimEnd('/'))
     ))</ArtifactsPath>
-
     <UseArtifactsOutput>true</UseArtifactsOutput>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <!-- Repository -->
@@ -46,7 +46,7 @@
   </PropertyGroup>
 
   <!-- Package -->
-  <ItemGroup Condition="'$(OutputType)' == 'Library'">
+  <ItemGroup Condition="'$(OutputType)' == 'Library' and $(IsPackable)">
     <None Include="$(MSBuildThisFileDirectory)\README.md" Pack="True" PackagePath="\" />
     <!--<None Include="$(MSBuildThisFileDirectory)\Icon.png" Pack="True" PackagePath="\" />-->
   </ItemGroup>

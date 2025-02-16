@@ -7,6 +7,7 @@
     <IncludeBuildOutput>false</IncludeBuildOutput> 
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <IncludeSymbols>false</IncludeSymbols>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <!-- The following libraries include the source generator interfaces and types we need -->
