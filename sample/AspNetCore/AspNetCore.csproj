@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Scalar.AspNetCore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Ravitor.Contracts\Ravitor.Contracts.csproj" />
+    <ProjectReference Include="..\..\src\Ravitor.Extensions.DependencyInjection\Ravitor.Extensions.DependencyInjection.csproj" />
+    <ProjectReference Include="..\..\src\Ravitor.Generator\Ravitor.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+</Project>
