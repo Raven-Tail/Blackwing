@@ -117,7 +117,6 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
             Name: Constants.Handlers.IRequestHandler,
             IsGenericType: true, TypeParameters.Length: 2, TypeArguments.Length: 2,
             ContainingAssembly.Name: Constants.Assembly.Name,
-            //ContainingNamespace.name:  { ContainingNamespace.Name: Constants.BaseNamespaceName, Name: Constants.ContractsNamespace },
         };
 
         static bool ImplementsIRequest(ITypeSymbol request, ITypeSymbol response)
@@ -129,7 +128,6 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
                         Name: Constants.Requests.IRequest,
                         IsGenericType: true, TypeParameters.Length: 1, TypeArguments.Length: 1,
                         ContainingAssembly.Name: Constants.Assembly.Name,
-                        //ContainingNamespace: { ContainingNamespace.Name: Constants.BaseNamespaceName, Name: Constants.ContractsNamespace }
                     })
                 {
                     return response.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat) == interfaceSymbol.TypeArguments[0].ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
@@ -160,9 +158,9 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
             var requestNode = invocation.ArgumentList.Arguments[0].ChildNodes().FirstOrDefault();
             if (requestNode is null) return null;
 
-            // We can't intercept interfaces and generic types.
+            // We can't intercept abstract types, interfaces and generic types.
             var requestInfo = context.SemanticModel.GetTypeInfo(requestNode).Type as INamedTypeSymbol;
-            if (requestInfo is null || requestInfo.TypeKind is TypeKind.Interface || requestInfo.IsGenericType)
+            if (requestInfo is null or {IsAbstract:true } or { IsGenericType: true })
                 return null;
 
             var request = requestInfo.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
@@ -185,7 +183,6 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
             Name: Constants.Sender.ISender,
             IsGenericType: false, TypeParameters.Length: 0, TypeArguments.Length: 0,
             ContainingAssembly.Name: Constants.Assembly.Name,
-            //ContainingNamespace: { ContainingNamespace.Name: Constants.BaseNamespaceName, Name: Constants.ContractsNamespace },
         };
 
         static bool ImplementsISender(INamedTypeSymbol handler) => handler is
@@ -193,7 +190,6 @@ public sealed partial class RavitorIncrementalGenerator : IIncrementalGenerator
             Name: Constants.Sender.ISender,
             IsGenericType: false, TypeParameters.Length: 0, TypeArguments.Length: 0,
             ContainingAssembly.Name: Constants.Assembly.Name,
-            //ContainingNamespace: { ContainingNamespace.Name: Constants.BaseNamespaceName, Name: Constants.ContractsNamespace },
         };
     }
 }
