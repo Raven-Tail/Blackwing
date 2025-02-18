@@ -7,11 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAOT", "ConsoleAOT.cs
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ravitor.Contracts", "..\..\src\Ravitor.Contracts\Ravitor.Contracts.csproj", "{FAC413EC-EF28-D122-8204-F3083B8667D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blackwing.Contracts", "..\..\src\Blackwing.Contracts\Blackwing.Contracts.csproj", "{FAC413EC-EF28-D122-8204-F3083B8667D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ravitor.Extensions.DependencyInjection", "..\..\src\Ravitor.Extensions.DependencyInjection\Ravitor.Extensions.DependencyInjection.csproj", "{8128332D-B711-D4A1-3DA1-1D295686D61B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blackwing.Extensions.DependencyInjection", "..\..\src\Blackwing.Extensions.DependencyInjection\Blackwing.Extensions.DependencyInjection.csproj", "{8128332D-B711-D4A1-3DA1-1D295686D61B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ravitor.Generator", "..\..\src\Ravitor.Generator\Ravitor.Generator.csproj", "{527E0BDF-883F-CAFF-5926-DB6B2C7DE8F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blackwing.Generator", "..\..\src\Blackwing.Generator\Blackwing.Generator.csproj", "{527E0BDF-883F-CAFF-5926-DB6B2C7DE8F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

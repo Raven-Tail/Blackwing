@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.2" />
+    <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" Version="17.13.1" />
+    <PackageReference Include="Blackwing.Contracts" Version="1.0.0-test" />
+    <PackageReference Include="Blackwing.Extensions.DependencyInjection" Version="1.0.0-test" />
+    <PackageReference Include="Blackwing.Generator" Version="1.0.0-test" PrivateAssets="all" />
+    <PackageReference Include="TUnit" Version="0.10.28" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="../Blackwing.Test.Integration/**/*.cs" />
+  </ItemGroup>
+
+</Project>

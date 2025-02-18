@@ -1,7 +1,7 @@
 using AspNetCoreSample.Application;
 using AspNetCoreSample.Domain;
 using Microsoft.AspNetCore.Mvc;
-using Ravitor.Contracts;
+using Blackwing.Contracts;
 using Riok.Mapperly.Abstractions;
 
 namespace AspNetCoreSample.Api;

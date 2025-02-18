@@ -1,8 +1,0 @@
-<Project InitialTargets="Ravitor_Generator">
-  <Target Name="Ravitor_Generator">
-    <PropertyGroup Condition="'$(DisableRavitorInterceptor)' != 'true'">
-      <InterceptorsNamespaces>$(InterceptorsNamespaces);Ravitor.Interceptor</InterceptorsNamespaces>
-      <InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);Ravitor.Interceptor</InterceptorsPreviewNamespaces>
-    </PropertyGroup>
-  </Target>
-</Project>

@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Logging;
-using Ravitor.Contracts.Pipelines;
-using Ravitor.Contracts.Requests;
+using Blackwing.Contracts.Pipelines;
+using Blackwing.Contracts.Requests;
 
 namespace AspNetCoreSample.Application;
 

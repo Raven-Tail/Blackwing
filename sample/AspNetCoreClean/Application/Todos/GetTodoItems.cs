@@ -1,6 +1,6 @@
 using AspNetCoreSample.Domain;
-using Ravitor.Contracts.Handlers;
-using Ravitor.Contracts.Requests;
+using Blackwing.Contracts.Handlers;
+using Blackwing.Contracts.Requests;
 
 namespace AspNetCoreSample.Application;
 

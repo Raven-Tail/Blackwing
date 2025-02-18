@@ -1,6 +1,6 @@
 ## SimpleConsole
 
-Simple showcase of Ravitor.
+Simple showcase of Blackwing.
 
 ### Build and run
 

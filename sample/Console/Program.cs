@@ -1,19 +1,19 @@
 using Microsoft.Extensions.DependencyInjection;
 using My.Extensions.DependencyInjection;
-using Ravitor.Contracts;
-using Ravitor.Contracts.Handlers;
-using Ravitor.Contracts.Options;
-using Ravitor.Contracts.Pipelines;
-using Ravitor.Contracts.Requests;
+using Blackwing.Contracts;
+using Blackwing.Contracts.Handlers;
+using Blackwing.Contracts.Options;
+using Blackwing.Contracts.Pipelines;
+using Blackwing.Contracts.Requests;
 
-[assembly: RavitorOptions(ServicesNamespace = "My.Extensions.DependencyInjection")]
+[assembly: BlackwingOptions(ServicesNamespace = "My.Extensions.DependencyInjection")]
 
 var services = new ServiceCollection();
 
 // This extensions method is generated, and is put in the "Microsoft.Extensions.DependencyInjection" namespace.
-// We override the namespace in the "RavitorOptions" attribute like in line 9.
-services.AddRavitor();
-services.AddRavitorHandlers();
+// We override the namespace in the "BlackwingOptions" attribute like in line 9.
+services.AddBlackwing();
+services.AddBlackwingHandlers();
 
 // Standard handlers are added by default, but we need to add pipeline steps manually.
 // Here are two examples.

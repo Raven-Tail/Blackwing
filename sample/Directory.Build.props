@@ -1,8 +1,8 @@
 <Project>
 
   <Import Project="..\Directory.Build.props" />
-  <Import Project="..\src\Ravitor.Generator\Ravitor.Generator.props" />
-  <Import Project="..\src\Ravitor.Generator\Ravitor.Generator.targets" />
+  <Import Project="..\src\Blackwing.Generator\Blackwing.Generator.props" />
+  <Import Project="..\src\Blackwing.Generator\Blackwing.Generator.targets" />
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />

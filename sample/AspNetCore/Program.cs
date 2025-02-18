@@ -1,5 +1,5 @@
 using ASPNETCore.WeatherForecasts;
-using Ravitor.Contracts;
+using Blackwing.Contracts;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,8 +11,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
 
-builder.Services.AddRavitor(); // Add default IMediator/ISender implementation
-builder.Services.AddRavitorHandlers(); // Add generated handlers
+builder.Services.AddBlackwing(); // Add default IMediator/ISender implementation
+builder.Services.AddBlackwingHandlers(); // Add generated handlers
 
 var app = builder.Build();
 

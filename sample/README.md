@@ -1,6 +1,6 @@
 ## Samples
 
-This directory contains various samples of Ravitor usage.
+This directory contains various samples of Blackwing usage.
 
 ---
 

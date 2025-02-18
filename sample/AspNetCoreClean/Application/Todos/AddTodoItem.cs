@@ -1,7 +1,7 @@
 using AspNetCoreSample.Domain;
 using FluentValidation;
-using Ravitor.Contracts.Handlers;
-using Ravitor.Contracts.Requests;
+using Blackwing.Contracts.Handlers;
+using Blackwing.Contracts.Requests;
 using System.Diagnostics.CodeAnalysis;
 
 namespace AspNetCoreSample.Application;

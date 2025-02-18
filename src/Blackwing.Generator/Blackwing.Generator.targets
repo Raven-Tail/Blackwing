@@ -1,0 +1,8 @@
+<Project InitialTargets="Blackwing_Generator">
+  <Target Name="Blackwing_Generator">
+    <PropertyGroup Condition="'$(DisableBlackwingInterceptor)' != 'true'">
+      <InterceptorsNamespaces>$(InterceptorsNamespaces);Blackwing.Interceptor</InterceptorsNamespaces>
+      <InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);Blackwing.Interceptor</InterceptorsPreviewNamespaces>
+    </PropertyGroup>
+  </Target>
+</Project>

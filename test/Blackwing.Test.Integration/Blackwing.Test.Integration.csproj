@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <!--<DisableBlackwingInterceptor>true</DisableBlackwingInterceptor>-->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
+    <PackageReference Include="TUnit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Blackwing.Contracts\Blackwing.Contracts.csproj" />
+    <ProjectReference Include="..\..\src\Blackwing.Extensions.DependencyInjection\Blackwing.Extensions.DependencyInjection.csproj" />
+    <ProjectReference Include="..\..\src\Blackwing.Generator\Blackwing.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <Import Project="..\..\src\Blackwing.Generator\Blackwing.Generator.props" />
+  <Import Project="..\..\src\Blackwing.Generator\Blackwing.Generator.targets" />
+
+</Project>

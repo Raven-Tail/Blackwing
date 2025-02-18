@@ -1,4 +1,4 @@
-﻿using Ravitor.Contracts.Requests;
+﻿using Blackwing.Contracts.Requests;
 
 namespace AspNetCore.Abstract;
 

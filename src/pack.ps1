@@ -22,9 +22,9 @@ if ($clearOutput)
 }
 
 $projects = @(
-    "$PSScriptRoot\Ravitor.Contracts\"
-    "$PSScriptRoot\Ravitor.Extensions.DependencyInjection\"
-    "$PSScriptRoot\Ravitor.Generator\"
+    "$PSScriptRoot\Blackwing.Contracts\"
+    "$PSScriptRoot\Blackwing.Extensions.DependencyInjection\"
+    "$PSScriptRoot\Blackwing.Generator\"
 )
 
 $cmd = "dotnet", "pack", "-c", "Release"

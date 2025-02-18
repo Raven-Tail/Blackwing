@@ -1,4 +1,4 @@
-using Ravitor.Contracts.Requests;
+using Blackwing.Contracts.Requests;
 using System.Diagnostics.CodeAnalysis;
 
 namespace AspNetCoreSample.Application;

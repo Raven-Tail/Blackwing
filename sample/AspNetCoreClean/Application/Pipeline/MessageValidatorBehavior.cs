@@ -1,4 +1,4 @@
-using Ravitor.Contracts.Pipelines;
+using Blackwing.Contracts.Pipelines;
 
 namespace AspNetCoreSample.Application;
 

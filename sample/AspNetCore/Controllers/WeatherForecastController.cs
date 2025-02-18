@@ -1,6 +1,6 @@
 using ASPNETCore.WeatherForecasts;
 using Microsoft.AspNetCore.Mvc;
-using Ravitor.Contracts;
+using Blackwing.Contracts;
 
 namespace ASPNETCore.Controllers;
 

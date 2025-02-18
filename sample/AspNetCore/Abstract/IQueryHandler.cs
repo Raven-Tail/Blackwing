@@ -1,4 +1,4 @@
-﻿using Ravitor.Contracts.Handlers;
+﻿using Blackwing.Contracts.Handlers;
 
 namespace AspNetCore.Abstract;
 

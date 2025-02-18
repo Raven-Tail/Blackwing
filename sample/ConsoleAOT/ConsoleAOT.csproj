@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Ravitor.Contracts\Ravitor.Contracts.csproj" />
-    <ProjectReference Include="..\..\src\Ravitor.Extensions.DependencyInjection\Ravitor.Extensions.DependencyInjection.csproj" />
-    <ProjectReference Include="..\..\src\Ravitor.Generator\Ravitor.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\..\src\Blackwing.Contracts\Blackwing.Contracts.csproj" />
+    <ProjectReference Include="..\..\src\Blackwing.Extensions.DependencyInjection\Blackwing.Extensions.DependencyInjection.csproj" />
+    <ProjectReference Include="..\..\src\Blackwing.Generator\Blackwing.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
 </Project>
