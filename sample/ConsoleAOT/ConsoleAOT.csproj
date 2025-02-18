@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <PublishAot>true</PublishAot>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Ravitor.Contracts\Ravitor.Contracts.csproj" />
+    <ProjectReference Include="..\..\src\Ravitor.Extensions.DependencyInjection\Ravitor.Extensions.DependencyInjection.csproj" />
+    <ProjectReference Include="..\..\src\Ravitor.Generator\Ravitor.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+</Project>

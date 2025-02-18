@@ -1,0 +1,11 @@
+<Project>
+
+  <Import Project="..\Directory.Build.props" />
+  <Import Project="..\src\Ravitor.Generator\Ravitor.Generator.props" />
+  <Import Project="..\src\Ravitor.Generator\Ravitor.Generator.targets" />
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+  </ItemGroup>
+
+</Project>
