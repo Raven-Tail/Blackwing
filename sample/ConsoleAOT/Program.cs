@@ -1,9 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using My.Extensions.DependencyInjection;
 using Blackwing.Contracts;
-using Blackwing.Contracts.Handlers;
 using Blackwing.Contracts.Options;
-using Blackwing.Contracts.Pipelines;
 using Blackwing.Contracts.Requests;
 
 [assembly: BlackwingOptions(ServicesNamespace = "My.Extensions.DependencyInjection")]

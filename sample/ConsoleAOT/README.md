@@ -27,18 +27,15 @@ You can execute `.\benchmark.ps1` to get the following output or compare them yo
 This was executed on an `AMD Ryzen 5 5600` processor.
 
 ```pwsh
-$ hyperfine "../../artifacts/sample/publish/Console/release/Console.exe" "../../artifacts/sample/publish/ConsoleAOT/release/ConsoleAOT.exe"
-
+$ hyperfine ..\..\artifacts\sample\publish\Console\release\Console.exe ..\..\artifacts\sample\publish\ConsoleAOT\release\ConsoleAOT.exe --warmup 5
 Benchmark 1: Console.exe
-  Time (mean ± σ):      57.8 ms ±   2.7 ms    [User: 23.3 ms, System: 7.1 ms]
-  Range (min … max):    54.9 ms …  70.3 ms    45 runs
+  Time (mean ± σ):      57.7 ms ±   1.7 ms    [User: 16.9 ms, System: 2.9 ms]
+  Range (min … max):    55.2 ms …  64.1 ms    48 runs
 
 Benchmark 2: ConsoleAOT.exe
-  Time (mean ± σ):      10.5 ms ±   4.2 ms    [User: 0.5 ms, System: 1.9 ms]
-  Range (min … max):     9.0 ms …  42.8 ms    62 runs
-
-  Warning: The first benchmarking run for this command was significantly slower than the rest (42.8 ms). This could be caused by (filesystem) caches that were not filled until after the first run. You should consider using the '--warmup' option to fill those caches before the actual benchmark. Alternatively, use the '--prepare' option to clear the caches before each timing run.
+  Time (mean ± σ):       9.6 ms ±   0.4 ms    [User: 0.0 ms, System: 0.1 ms]
+  Range (min … max):     8.7 ms …  11.6 ms    202 runs
 
 Summary
-  ConsoleAOT.exe ran 5.50 ± 2.22 times faster than Console.exe
+  ConsoleAOT.exe ran 5.99 ± 0.33 times faster than Console.exe
 ```

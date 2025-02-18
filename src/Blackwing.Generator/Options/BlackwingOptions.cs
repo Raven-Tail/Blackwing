@@ -1,6 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 
-namespace Blackwing;
+namespace Blackwing.Generator.Options;
 
 internal sealed record BlackwingOptions
 {

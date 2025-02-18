@@ -13,7 +13,7 @@ param (
 if ($clearOutput)
 {
     $dir = Resolve-Path -Path ($output -ne "" ? $output : "../artifacts/src/package/release")
-    $items = Get-ChildItem -Path $dir -Filter "*nupkg"
+    $items = Get-ChildItem -Path $dir -Filter "Blackwing*nupkg"
     if ($items.Length -gt 0)
     {
         Write-Host "Removing $($items.Length) items (.*nupkg) at '$dir'"

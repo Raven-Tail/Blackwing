@@ -10,7 +10,7 @@
 
 #nullable enable
 
-using Blackwing.Contracts.Handlers;
+using Blackwing.Contracts.Requests;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Some.Nested.Handlers;

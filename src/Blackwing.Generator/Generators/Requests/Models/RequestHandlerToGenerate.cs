@@ -1,8 +1,8 @@
 ﻿using Microsoft.CodeAnalysis;
 
-namespace Blackwing.Generator.Models;
+namespace Blackwing.Generator.Generators.Requests.Models;
 
-internal readonly record struct HandlerToGenerate
+internal readonly record struct RequestHandlerToGenerate
 {
     public readonly string WrapperHandler;
     public readonly string RequestHandler;
@@ -10,7 +10,7 @@ internal readonly record struct HandlerToGenerate
     public readonly string Response;
     public readonly string WrapperNamespace;
 
-    public HandlerToGenerate(INamedTypeSymbol classSymbol, INamedTypeSymbol interfaceSymbol)
+    public RequestHandlerToGenerate(INamedTypeSymbol classSymbol, INamedTypeSymbol interfaceSymbol)
     {
         WrapperHandler = WrapperName(classSymbol, true);
         RequestHandler = classSymbol.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);

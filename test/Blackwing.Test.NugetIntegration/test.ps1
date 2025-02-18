@@ -10,6 +10,8 @@ $build = "dotnet build -c Release --packages .\packages --no-restore"
 $test = "dotnet test -c Release --no-build --no-restore "
 
 New-Item -Name "packages" -ItemType Directory -ErrorAction SilentlyContinue
+Get-ChildItem -Path ".\packages\" -Filter "Blackwing*" -Recurse -Directory | Remove-Item -Recurse
+
 Invoke-Expression $pack
 Invoke-Expression $restore
 Invoke-Expression $build

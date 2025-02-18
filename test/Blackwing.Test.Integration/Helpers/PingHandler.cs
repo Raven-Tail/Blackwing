@@ -1,4 +1,4 @@
-﻿using Blackwing.Contracts.Handlers;
+﻿using Blackwing.Contracts.Requests;
 
 namespace Blackwing.Test.Integration.Helpers;
 

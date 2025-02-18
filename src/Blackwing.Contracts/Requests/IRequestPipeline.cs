@@ -1,7 +1,4 @@
-﻿namespace Blackwing.Contracts.Pipelines;
-
-public delegate ValueTask<TResponse> IRequestPipelineDelegate<TRequest, TResponse>(TRequest request, CancellationToken cancellationToken = default)
-    where TRequest : notnull;
+﻿namespace Blackwing.Contracts.Requests;
 
 public interface IRequestPipeline<TRequest, TResponse>
     where TRequest : notnull

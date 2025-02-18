@@ -1,6 +1,4 @@
-﻿using Blackwing.Contracts.Requests;
-
-namespace Blackwing.Contracts.Handlers;
+﻿namespace Blackwing.Contracts.Requests;
 
 public interface IRequestHandler<in TRequest, TResponse>
     where TRequest : notnull, IRequest<TResponse>

@@ -1,5 +1,4 @@
 using AspNetCoreSample.Domain;
-using Blackwing.Contracts.Handlers;
 using Blackwing.Contracts.Requests;
 
 namespace AspNetCoreSample.Application;

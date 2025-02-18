@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Blackwing.Contracts;
-using Blackwing.Contracts.Handlers;
 using Blackwing.Contracts.Requests;
 
 namespace Blackwing.Services;

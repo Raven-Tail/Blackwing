@@ -1,5 +1,4 @@
 using Microsoft.Extensions.Logging;
-using Blackwing.Contracts.Pipelines;
 using Blackwing.Contracts.Requests;
 
 namespace AspNetCoreSample.Application;

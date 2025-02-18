@@ -10,8 +10,7 @@
 
 #nullable enable
 
-using Blackwing.Contracts.Handlers;
-using Blackwing.Contracts.Pipelines;
+using Blackwing.Contracts.Requests;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Blackwing.Generator;

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Blackwing.Contracts.Options;
-using Blackwing.Contracts.Pipelines;
+using Blackwing.Contracts.Requests;
 using Blackwing.Test.Integration.Helpers;
 
 //[assembly:BlackwingOptions(DisableInterceptor = true)]

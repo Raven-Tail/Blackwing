@@ -12,6 +12,7 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using Blackwing.Contracts;
 using Blackwing.Contracts.Requests;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -33,7 +34,7 @@ namespace Blackwing.Interceptor
 {
     static file class Interceptors
     {
-        [InterceptsLocation(1, "WyGK56Ajl4JU+zoDt+lAQ2UCAAA=")] // (24,20)
+        [InterceptsLocation(1, "IJ5rK9fkfdgPK5nKgJ06r0ACAAA=")] // (23,20)
         public static ValueTask<TResponse> Send_Ping<TResponse>(this global::Blackwing.Contracts.ISender sender, IRequest<TResponse> request, CancellationToken cancellationToken = default)
         {
             var rqst = request as global::Ping;

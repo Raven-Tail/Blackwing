@@ -1,6 +1,5 @@
 using AspNetCoreSample.Domain;
 using FluentValidation;
-using Blackwing.Contracts.Handlers;
 using Blackwing.Contracts.Requests;
 using System.Diagnostics.CodeAnalysis;
 
