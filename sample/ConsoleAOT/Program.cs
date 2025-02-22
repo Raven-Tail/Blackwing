@@ -4,7 +4,7 @@ using Blackwing.Contracts;
 using Blackwing.Contracts.Options;
 using Blackwing.Contracts.Requests;
 
-[assembly: BlackwingOptions(ServicesNamespace = "My.Extensions.DependencyInjection")]
+[assembly:BlackwingOptions(ServicesNamespace = "My.Extensions.DependencyInjection")]
 
 var services = new ServiceCollection();
 
