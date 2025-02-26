@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="../../src/Blackwing.Contracts/Blackwing.Contracts.csproj" />
+    <Project Path="../../src/Blackwing.Extensions.DependencyInjection/Blackwing.Extensions.DependencyInjection.csproj" />
+    <Project Path="../../src/Blackwing.Generator/Blackwing.Generator.csproj" />
+  </Folder>
+  <Project Path="Api/Api.csproj" />
+  <Project Path="Application/Application.csproj" />
+  <Project Path="Domain/Domain.csproj" />
+  <Project Path="Infrastructure/Infrastructure.csproj" />
+</Solution>

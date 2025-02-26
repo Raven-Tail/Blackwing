@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="../../src/Blackwing.Contracts/Blackwing.Contracts.csproj" />
+    <Project Path="../../src/Blackwing.Extensions.DependencyInjection/Blackwing.Extensions.DependencyInjection.csproj" />
+    <Project Path="../../src/Blackwing.Generator/Blackwing.Generator.csproj" />
+  </Folder>
+  <Project Path="AspNetCore.csproj" />
+</Solution>
