@@ -13,6 +13,13 @@ param (
     [string[]] $remainingArgs
 )
 
+function Execute ($argumentList) {
+    $process = Start-Process -FilePath "dotnet" -ArgumentList $argumentList -NoNewWindow -Wait
+    if ($null -ne $process.ExitCode || $process.ExitCode -ne 0) {
+        exit $process.ExitCode
+    }
+}
+
 if ($clearOutput)
 {
     $dir = Resolve-Path -Path ($output -ne "" ? $output : "../artifacts/src/package/release")
@@ -20,7 +27,7 @@ if ($clearOutput)
     if ($items.Length -gt 0)
     {
         Write-Host "Removing $($items.Length) items (.*nupkg) at '$dir'"
-        $items | Remove-Item
+        $items | ForEach-Object { Remove-Item -Path $_}
     }
 }
 
@@ -30,7 +37,7 @@ $projects = @(
     "$PSScriptRoot\Blackwing.Generator\"
 )
 
-$cmd = @("dotnet", "pack")
+$cmd = @("pack")
 $arguments = @("-c", "Release")
 
 foreach ($project in $projects) {
@@ -43,5 +50,5 @@ foreach ($project in $projects) {
     }
     $expression = ($expression + $remainingArgs) -join " "
     Write-Host "$ $expression"
-    Invoke-Expression -Command $expression
+    Execute $expression
 }
