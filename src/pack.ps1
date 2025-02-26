@@ -1,4 +1,4 @@
-[CmdletBinding()]
+[CmdletBinding(PositionalBinding = $false)]
 param (
     [Parameter()]
     [string] $output = "",
@@ -7,7 +7,10 @@ param (
     [switch] $clearOutput = $false,
 
     [Parameter()]
-    [string] $version = ""
+    [string] $version = "",
+
+    [Parameter(ValueFromRemainingArguments)]
+    [string[]] $remainingArgs
 )
 
 if ($clearOutput)
@@ -27,20 +30,18 @@ $projects = @(
     "$PSScriptRoot\Blackwing.Generator\"
 )
 
-$cmd = "dotnet", "pack", "-c", "Release"
+$cmd = @("dotnet", "pack")
+$arguments = @("-c", "Release")
 
 foreach ($project in $projects) {
-    $expression = $cmd;
-
+    $expression = $cmd + $project + $arguments;
     if ($output -ne "") {
-        $output = Resolve-Path $output
         $expression += "-o", $output
     }
     if ($version -ne "") {
         $expression += "-p:Version=$version", "-p:DisableGitVersionTask=true"
     }
-    $expression += $project
-    $expression = $expression -join " "
+    $expression = ($expression + $remainingArgs) -join " "
     Write-Host "$ $expression"
     Invoke-Expression -Command $expression
 }

@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       test: { type: boolean, default: false, description: Run tests. }
-      publish: { type: boolean, default: false, description: Push to nuget (Needs pack). }
+      publish: { type: boolean, default: false, description: Publish to nuget. Will run all tests too. }
     secrets:
       nuget-key:
 jobs:
@@ -33,27 +33,27 @@ jobs:
       run: .\build.ps1
 
     - name: Test
-      if: ${{ inputs.test || inputs.publish }}
+      if: inputs.test || inputs.publish
       working-directory: test
       shell: pwsh
       run: .\test.ps1
 
     - name: Test Nuget
-      if: ${{ inputs.publish }}
+      if: inputs.publish
       working-directory: test/Blackwing.Test.NugetIntegration
       shell: pwsh
       run: .\test.ps1
 
     - name: Pack
-      if: ${{ inputs.publish }}
+      if: inputs.publish
       working-directory: src
       shell: pwsh
-      run: .\pack.ps1 -output ./packages
+      run: .\pack.ps1 -output ./packages --no-restore --no-build
 
     - name: Push
-      if: ${{ inputs.publish }}
+      if: inputs.publish
       working-directory: src
       env:
         SOURCE_URL: https://api.nuget.org/v3/index.json
         NUGET_AUTH_TOKEN: ${{ secrets.nuget-key }}
-      run: dotnet nuget push packages/*.nupkg --skip-duplicate -s ${{ env.SOURCE_URL }} -k ${{ env.NUGET_AUTH_TOKEN }}
+      run: dotnet nuget push ./packages/*.nupkg --skip-duplicate -s ${{ env.SOURCE_URL }} -k ${{ env.NUGET_AUTH_TOKEN }}

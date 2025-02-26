@@ -21,8 +21,8 @@
 
   <!-- Repository -->
   <PropertyGroup>
-    <Authors>Raven Tail, Panagiotis Athanasiou</Authors>
-    <Copyright>Copyright (c) 2025, $(Authors)</Copyright>
+    <Authors>Raven Tail</Authors>
+    <Copyright>Copyright (c) $([System.DateTimeOffset]::UtcNow.ToString("yyyy")) $(Authors)</Copyright>
     <RepositoryUrl>https://www.github.com/raven-tail/blackwing</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryLicense>MIT</RepositoryLicense>

@@ -1,0 +1,19 @@
+name: publish
+env: { DOTNET_NOLOGO: true }
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    tags:
+    - v*
+    paths:
+    - ./src/**
+    - ./test/**
+jobs:
+  pipeline:
+    uses: Raven-Tail/Blackwing/.github/workflows/_.yaml@main
+    with:
+      publish: true
+    secrets:
+      nuget-key: ${{ secrets.NUGET_API_KEY }}
