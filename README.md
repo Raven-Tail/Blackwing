@@ -1,10 +1,11 @@
 # Blackwing
 
-[![Build Action Status]()](https://github.com/raven-tail/blackwing/actions)
+[![Build Action](https://github.com/Raven-Tail/Blackwing/actions/workflows/build.yaml/badge.svg)](https://github.com/Raven-Tail/Blackwing/actions/workflows/build.yaml)
+[![Publish Action](https://github.com/Raven-Tail/Blackwing/actions/workflows/publish.yaml/badge.svg)](https://github.com/Raven-Tail/Blackwing/actions/workflows/publish.yaml)
 [![License](https://img.shields.io/github/license/raven-tail/blackwing?style=flat-square)](https://github.com/raven-tail/blackwing/blob/main/LICENSE)
 [![.NET 8](https://img.shields.io/badge/.NET%208-%23512bd4?style=flat)](https://dotnet.microsoft.com/)
 [![.NET 9](https://img.shields.io/badge/.NET%209-%23512bd4?style=flat)](https://dotnet.microsoft.com/)
-[![Downloads](https://img.shields.io/nuget/dt/blackwing.contracts?style=flat-square)](https://www.nuget.org/packages/blackwing.contracts/)
+[![Downloads](https://img.shields.io/nuget/dt/blackwing.contracts?style=flat-square)](https://www.nuget.org/packages/Blackwing.Contracts/)
 
 Blackwing is the name of your dependable Raven that delivers your requests to the correct handler and returns with his response.
 
@@ -25,11 +26,11 @@ The goal is to be as minimal and straightforward as possible to give the best of
 >[!Warning]
 > .NET 9 SDK Required for the preview feature of [interceptors](https://github.com/dotnet/roslyn/blob/main/docs/features/interceptors.md).
 
-| Package | Version |
-| --      | --      |
-| Blackwing.Contracts | [![]()]() |
-| Blackwing.Generator | [![]()]() |
-| Blackwing.Extensions.DependencyInjection | [![]()]() |
+| Package | Stable | Pre Release |
+| --      |--|--|
+| Blackwing.Contracts | [![Contracts](https://img.shields.io/nuget/v/Blackwing.Contracts)](https://www.nuget.org/packages/Blackwing.Contracts) | [![Contracts](https://img.shields.io/nuget/vpre/Blackwing.Contracts)](https://www.nuget.org/packages/Blackwing.Contracts) |
+| Blackwing.Generator | [![Generator](https://img.shields.io/nuget/v/Blackwing.Generator)](https://www.nuget.org/packages/Blackwing.Generator) | [![Generator](https://img.shields.io/nuget/vpre/Blackwing.Generator)](https://www.nuget.org/packages/Blackwing.Generator) |
+| Blackwing.Extensions.DependencyInjection | [![Dependency Injection Extensions](https://img.shields.io/nuget/v/Blackwing.Extensions.DependencyInjection)](https://www.nuget.org/packages/Blackwing.Extensions.DependencyInjection) | [![Dependency Injection Extensions](https://img.shields.io/nuget/vpre/Blackwing.Extensions.DependencyInjection)](https://www.nuget.org/packages/Blackwing.Extensions.DependencyInjection) |
 
 # Usage
 
@@ -150,7 +151,7 @@ var response = await mediator.Send(request);
 
 # Contributing
 
-For general contribution information you can read the [Raven Tail Contributing document.](https://github.com/Raven-Tail/.github/blob/main/CONTRIBUTING.md).
+For general contribution information you can read the [Raven Tail Contributing document](https://github.com/Raven-Tail/.github/blob/main/CONTRIBUTING.md).
 
 ## Local Development
 
