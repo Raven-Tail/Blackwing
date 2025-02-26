@@ -34,7 +34,6 @@ namespace Blackwing.Interceptor
 {
     static file class Interceptors
     {
-        [InterceptsLocation(1, "k/osf0qqRUYrBwr8R+I9b7sCAAA=")] // (26,32)
         public static ValueTask<TResponse> Send_Some_Nested_Types_Program_Ping<TResponse>(this global::Blackwing.Contracts.ISender sender, IRequest<TResponse> request, CancellationToken cancellationToken = default)
         {
             var rqst = request as global::Some.Nested.Types.Program.Ping;

@@ -65,7 +65,7 @@ public abstract class TestBase
 
         await Verifier
             .Verify(driver)
-            //.ScrubLinesContaining("InterceptsLocation")
+            .ScrubLinesContaining("[InterceptsLocation(")
             .UseDirectory(Path.Combine(Snapshots, GetType().Name, resourceFileName))
             .UseFileName("#");
     }
