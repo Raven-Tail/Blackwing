@@ -24,13 +24,15 @@ The goal is to be as minimal and straightforward as possible to give the best of
 ## Packages
 
 >[!Warning]
-> .NET 9 SDK Required for the preview feature of [interceptors](https://github.com/dotnet/roslyn/blob/main/docs/features/interceptors.md).
+> .NET 9 SDK is required for use of the preview feature called [interceptors](https://github.com/dotnet/roslyn/blob/main/docs/features/interceptors.md).
 
-| Package | Stable | Pre Release |
-| --      |--|--|
-| Blackwing.Contracts | [![Contracts](https://img.shields.io/nuget/v/Blackwing.Contracts)](https://www.nuget.org/packages/Blackwing.Contracts) | [![Contracts](https://img.shields.io/nuget/vpre/Blackwing.Contracts)](https://www.nuget.org/packages/Blackwing.Contracts) |
-| Blackwing.Generator | [![Generator](https://img.shields.io/nuget/v/Blackwing.Generator)](https://www.nuget.org/packages/Blackwing.Generator) | [![Generator](https://img.shields.io/nuget/vpre/Blackwing.Generator)](https://www.nuget.org/packages/Blackwing.Generator) |
-| Blackwing.Extensions.DependencyInjection | [![Dependency Injection Extensions](https://img.shields.io/nuget/v/Blackwing.Extensions.DependencyInjection)](https://www.nuget.org/packages/Blackwing.Extensions.DependencyInjection) | [![Dependency Injection Extensions](https://img.shields.io/nuget/vpre/Blackwing.Extensions.DependencyInjection)](https://www.nuget.org/packages/Blackwing.Extensions.DependencyInjection) |
+
+**Blackwing.Contracts**  
+[![Contracts](https://img.shields.io/nuget/v/Blackwing.Contracts)](https://www.nuget.org/packages/Blackwing.Contracts) [![Contracts](https://img.shields.io/nuget/vpre/Blackwing.Contracts)](https://www.nuget.org/packages/Blackwing.Contracts)  
+**Blackwing.Generator**  
+[![Generator](https://img.shields.io/nuget/v/Blackwing.Generator)](https://www.nuget.org/packages/Blackwing.Generator) [![Generator](https://img.shields.io/nuget/vpre/Blackwing.Generator)](https://www.nuget.org/packages/Blackwing.Generator)  
+**Blackwing.Extensions.DependencyInjection**  
+[![Dependency Injection Extensions](https://img.shields.io/nuget/v/Blackwing.Extensions.DependencyInjection)](https://www.nuget.org/packages/Blackwing.Extensions.DependencyInjection) [![Dependency Injection Extensions](https://img.shields.io/nuget/vpre/Blackwing.Extensions.DependencyInjection)](https://www.nuget.org/packages/Blackwing.Extensions.DependencyInjection)
 
 # Usage
 
