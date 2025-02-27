@@ -17,6 +17,7 @@
     <UseArtifactsOutput>true</UseArtifactsOutput>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IsPackable>false</IsPackable>
+    <DisableGitVersionTask Condition="'$(IsPackable)' == 'false'">false</DisableGitVersionTask>
   </PropertyGroup>
 
   <!-- Repository -->

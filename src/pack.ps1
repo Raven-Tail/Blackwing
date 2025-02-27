@@ -13,12 +13,7 @@ param (
     [string[]] $remainingArgs
 )
 
-function Execute ($argumentList) {
-    $process = Start-Process -FilePath "dotnet" -ArgumentList $argumentList -NoNewWindow -Wait
-    if ($null -ne $process.ExitCode || $process.ExitCode -ne 0) {
-        exit $process.ExitCode
-    }
-}
+Import-Module $PSScriptRoot\..\Invoke-Process.psm1
 
 if ($clearOutput)
 {
@@ -37,8 +32,8 @@ $projects = @(
     "$PSScriptRoot\Blackwing.Generator\"
 )
 
-$cmd = @("pack")
-$arguments = @("-c", "Release")
+$cmd = "dotnet", "pack"
+$arguments = "-c", "Release"
 
 foreach ($project in $projects) {
     $expression = $cmd + $project + $arguments;
@@ -50,5 +45,5 @@ foreach ($project in $projects) {
     }
     $expression = ($expression + $remainingArgs) -join " "
     Write-Host "$ $expression"
-    Execute $expression
+    Invoke-Process $expression
 }
