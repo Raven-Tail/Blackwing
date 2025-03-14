@@ -2,10 +2,10 @@
 
 [![Build Action](https://github.com/Raven-Tail/Blackwing/actions/workflows/build.yaml/badge.svg)](https://github.com/Raven-Tail/Blackwing/actions/workflows/build.yaml)
 [![Publish Action](https://github.com/Raven-Tail/Blackwing/actions/workflows/publish.yaml/badge.svg)](https://github.com/Raven-Tail/Blackwing/actions/workflows/publish.yaml)
-[![License](https://img.shields.io/github/license/raven-tail/blackwing?style=flat-square)](https://github.com/raven-tail/blackwing/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/raven-tail/blackwing?style=flat)](https://github.com/raven-tail/blackwing/blob/main/LICENSE)
 [![.NET 8](https://img.shields.io/badge/.NET%208-%23512bd4?style=flat)](https://dotnet.microsoft.com/)
 [![.NET 9](https://img.shields.io/badge/.NET%209-%23512bd4?style=flat)](https://dotnet.microsoft.com/)
-[![Downloads](https://img.shields.io/nuget/dt/blackwing.contracts?style=flat-square)](https://www.nuget.org/packages/Blackwing.Contracts/)
+[![Downloads](https://img.shields.io/nuget/dt/blackwing.contracts?style=flat)](https://www.nuget.org/packages/Blackwing.Contracts/)
 
 Blackwing is the name of your dependable Raven that delivers your requests to the correct handler and returns with his response.
 
